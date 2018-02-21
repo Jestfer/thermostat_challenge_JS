@@ -1,4 +1,3 @@
-debugger;
 'use strict';
 
 function Thermostat() {
@@ -12,6 +11,7 @@ Thermostat.prototype.up_temp = function(degrees) {
 
 Thermostat.prototype.down_temp = function(degrees) {
   this.current_temp -= degrees;
+  
   if(this.current_temp < 10) {
     throw new Error('temperature can not be below 10 degrees!');
   }
