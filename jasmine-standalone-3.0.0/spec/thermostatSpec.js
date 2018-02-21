@@ -4,9 +4,13 @@ describe('Thermostat', function() {
   beforeEach(function() {
     thermo = new Thermostat();
   });
-
+  
   it('it has a default temp of 20 degrees', function() {
     expect(thermo.default_temp).toEqual(20);
+  });
+
+  it('it has a minimum temp of 10 degrees', function(){
+    expect(function(){thermo.down_temp(15)}).toThrowError('temperature can not be below 10 degrees!')
   });
 
   describe('#up_temp', function() {
