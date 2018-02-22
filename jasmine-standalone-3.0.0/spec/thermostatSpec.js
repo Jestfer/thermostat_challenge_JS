@@ -4,35 +4,41 @@ describe('Thermostat', function() {
   beforeEach(function() {
     thermo = new Thermostat();
   });
-  
+
   it('it has a default temp of 20 degrees', function() {
-    expect(thermo.default_temp).toEqual(20);
+    expect(thermo.defaultTemp).toEqual(20);
   });
 
   it('it has a minimum temp of 10 degrees', function(){
-    expect(function(){thermo.down_temp(15)}).toThrowError('temperature can not be below 10 degrees!')
+    expect(function(){thermo.downTemp(15)}).toThrowError('temperature can not be below 10 degrees!')
   });
 
-  describe('#up_temp', function() {
+  describe('#upTemp', function() {
     it('increases temperature', function() {
-      thermo.up_temp(10);
-      expect(thermo.current_temp).toEqual(30);
+      thermo.upTemp(10);
+      expect(thermo.currentTemp).toEqual(30);
     });
   });
 
-  describe('#down_temp', function() {
+  describe('#downTemp', function() {
     it('decreases temperature', function(){
-      thermo.down_temp(10);
-      expect(thermo.current_temp).toEqual(10);
+      thermo.downTemp(10);
+      expect(thermo.currentTemp).toEqual(10);
     });
   });
 
-  describe('#saving mode', function() {
+  describe('#powerSave', function() {
     it('limits temp to 25 if power save mode is on', function() {
-      thermo.current_temp = 25;
-      thermo.power_save = true;
-
-      expect(function(){thermo.up_temp(1)}).toThrow('Power Save mode on, max temp is 25');
+      thermo.currentTemp = 25;
+      thermo.powerSave = true;
+      expect(function(){thermo.upTemp(1)}).toThrow('Power Save mode on, max temp is 25');
     });
+    it('limits temp to 32 if power save mode is off', function() {
+      thermo.currentTemp = 32;
+      expect(function(){ thermo.upTemp(1)}).toThrow('Max temp is 32');
+    })
   });
 });
+
+
+// expect(function() {thermostat.up();}).toThrow('Max temp is 32');
