@@ -3,7 +3,7 @@
 function Thermostat() {
   this.defaultTemp = 20;
   this.currentTemp = 20;
-  this.powerSave = false;
+  this.powerSave = true;
 };
 
 Thermostat.prototype.upTemp = function(degrees) {
