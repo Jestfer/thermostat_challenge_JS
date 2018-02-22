@@ -16,7 +16,7 @@ Thermostat.prototype.upTemp = function(degrees) {
   } else if (this.powerSave === false && newTemp > 32) {
     throw 'Max temp is 32';
   }
-  
+
   this.currentTemp = newTemp;
 };
 
@@ -31,7 +31,7 @@ Thermostat.prototype.downTemp = function(degrees) {
 };
 
 Thermostat.prototype.reset = function() {
-  this.currentTemp = 20;
+  this.currentTemp = this.defaultTemp;
 };
 
 Thermostat.prototype.energyUsage = function() {
