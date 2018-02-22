@@ -50,14 +50,17 @@ describe('Thermostat', function() {
       thermo.upTemp(5);
       thermo.reset();
       expect(thermo.currentTemp).toEqual(thermo.defaultTemp);
-    })
-  })
+    });
+  });
 
   describe('#energyUsage', function() {
     it('user can check the energy usage of the thermo', function() {
       thermo.currentTemp = 16;
-
-      expect(thermo.energyUsage).toEqual('Low-usage');
+      expect(thermo.energyUsage).toEqual('low-usage');
+    });
+    it("energyUsage is 'medium-usage when > 18 and < 25'", function() {
+      thermo.energyUsage = 24;
+      expect(thermo.energyUsage).toEqual('medium-usage');
     });
   });
 });

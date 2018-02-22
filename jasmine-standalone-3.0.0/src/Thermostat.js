@@ -4,6 +4,7 @@ function Thermostat() {
   this.defaultTemp = 20;
   this.currentTemp = 20;
   this.powerSave = true;
+  this.energyUsage = 'low-usage'
 };
 
 Thermostat.prototype.upTemp = function(degrees) {
