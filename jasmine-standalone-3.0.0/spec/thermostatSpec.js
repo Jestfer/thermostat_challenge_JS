@@ -26,4 +26,13 @@ describe('Thermostat', function() {
       expect(thermo.current_temp).toEqual(10);
     });
   });
+
+  describe('#saving mode', function() {
+    it('limits temp to 25 if power save mode is on', function() {
+      thermo.current_temp = 25;
+      thermo.power_save = true;
+
+      expect(function(){thermo.up_temp(1)}).toThrow('Power Save mode on, max temp is 25');
+    });
+  });
 });
