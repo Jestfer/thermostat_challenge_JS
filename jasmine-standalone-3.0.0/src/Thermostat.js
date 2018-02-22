@@ -4,7 +4,6 @@ function Thermostat() {
   this.defaultTemp = 20;
   this.currentTemp = 20;
   this.powerSave = true;
-  this.energyUsage = 'low-usage'
 };
 
 Thermostat.prototype.upTemp = function(degrees) {
@@ -29,4 +28,14 @@ Thermostat.prototype.downTemp = function(degrees) {
 
 Thermostat.prototype.reset = function() {
   this.currentTemp = 20;
+};
+
+Thermostat.prototype.energyUsage = function() {
+  if (this.currentTemp < 18) {
+    return 'low-usage';
+  } else if (this.currentTemp < 25) {
+    return 'medium-usage';
+  } else {
+    return 'high-usage';
+  }
 };

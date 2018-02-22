@@ -56,11 +56,17 @@ describe('Thermostat', function() {
   describe('#energyUsage', function() {
     it('user can check the energy usage of the thermo', function() {
       thermo.currentTemp = 16;
-      expect(thermo.energyUsage).toEqual('low-usage');
+      expect(thermo.energyUsage()).toEqual('low-usage');
     });
-    it("energyUsage is 'medium-usage when > 18 and < 25'", function() {
-      thermo.energyUsage = 24;
-      expect(thermo.energyUsage).toEqual('medium-usage');
+
+    it("energyUsage is 'medium-usage' when > 18 and < 25", function() {
+      thermo.currentTemp = 24;
+      expect(thermo.energyUsage()).toEqual('medium-usage');
+    });
+
+    it("energyUsage is 'high-usage' when > 25", function() {
+      thermo.currentTemp = 26;
+      expect(thermo.energyUsage()).toEqual('high-usage');
     });
   });
 });
