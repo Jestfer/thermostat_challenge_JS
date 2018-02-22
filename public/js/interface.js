@@ -46,6 +46,6 @@ $(document).ready(function () {
 
   function printTemp() {
     currentTemp.text(thermo.currentTemp);
-    currentTemp.attr('class', thermostat.energyUsage());
+    $('#temperature').attr('class', thermo.energyUsage());
   };
 });
