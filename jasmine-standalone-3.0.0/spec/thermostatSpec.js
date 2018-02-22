@@ -52,4 +52,12 @@ describe('Thermostat', function() {
       expect(thermo.currentTemp).toEqual(thermo.defaultTemp);
     })
   })
+
+  describe('#energyUsage', function() {
+    it('user can check the energy usage of the thermo', function() {
+      thermo.currentTemp = 16;
+
+      expect(thermo.energyUsage).toEqual('Low-usage');
+    });
+  });
 });

@@ -25,3 +25,7 @@ Thermostat.prototype.downTemp = function(degrees) {
     throw new Error('temperature can not be below 10 degrees!');
   }
 };
+
+Thermostat.prototype.reset = function() {
+  this.currentTemp = 20;
+};
