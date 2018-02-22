@@ -8,10 +8,13 @@ function Thermostat() {
 
 Thermostat.prototype.upTemp = function(degrees) {
   this.currentTemp += degrees;
+
   if (this.powerSave === true && this.currentTemp > 25) {
-    // this.currentTemp -= degrees;
     this.currentTemp -= degrees;
     throw 'Power Save mode on, max temp is 25';
+   } else if (this.powerSave === false && this.currentTemp > 32) {
+    this.currentTemp -= degrees;
+    throw 'Max temp is 32';
    }
 };
 

@@ -33,12 +33,17 @@ describe('Thermostat', function() {
       thermo.powerSave = true;
       expect(function(){thermo.upTemp(1)}).toThrow('Power Save mode on, max temp is 25');
     });
+
     it('limits temp to 32 if power save mode is off', function() {
       thermo.currentTemp = 32;
       expect(function(){ thermo.upTemp(1)}).toThrow('Max temp is 32');
-    })
+    });
+
+    it('power save is on by default', function() {
+      expect(thermo.powerSave).toBe(true);
+    });
   });
 });
 
 
-// expect(function() {thermostat.up();}).toThrow('Max temp is 32');
+
