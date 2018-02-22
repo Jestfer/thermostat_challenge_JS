@@ -2,7 +2,7 @@
 
 function Thermostat() {
   this.defaultTemp = 20;
-  this.currentTemp = 20;
+  this.currentTemp = 25;
   this.powerSave = true;
 };
 
@@ -12,16 +12,16 @@ Thermostat.prototype.upTemp = function(degrees) {
   if (this.powerSave === true && this.currentTemp > 25) {
     this.currentTemp -= degrees;
     throw 'Power Save mode on, max temp is 25';
-   } else if (this.powerSave === false && this.currentTemp > 32) {
+  } else if (this.powerSave === false && this.currentTemp > 32) {
     this.currentTemp -= degrees;
     throw 'Max temp is 32';
-   }
+  }
 };
 
 Thermostat.prototype.downTemp = function(degrees) {
   this.currentTemp -= degrees;
 
-  if(this.currentTemp < 10) {
+  if (this.currentTemp < 10) {
     throw new Error('temperature can not be below 10 degrees!');
   }
 };
