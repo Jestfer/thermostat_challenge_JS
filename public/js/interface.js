@@ -13,10 +13,11 @@ $(document).ready(function () {
   // console.log(thermo.currentTemp);
 
   // Closure, función como parámetro...
-  $('#temperature-up').click(function () {
+  $('#temperature-up').click(function (e) {
     /// Mal hecho, no modificamos la propiedad, el método upTemp se encarga de eso
     /// xk la propiedad normalmente sería privada y no podríamos modificarla
     // thermo.currentTemp += 1;
+    console.log(e);
     thermo.upTemp(1);
     printTemp();
   });
@@ -29,6 +30,18 @@ $(document).ready(function () {
   $('#temperature-reset').click(function () {
     thermo.reset();
     printTemp();
+  });
+
+  $('#temperature-set').click(function () {
+    var userInput = prompt('Set your temperature');
+
+    if (userInput > thermo.currentTemp) {
+      thermo.upTemp(userInput - thermo.currentTemp);
+      printTemp();
+    } else if (userInput < thermo.currentTemp) {
+      thermo.downTemp(thermo.currentTemp - userInput);
+      printTemp();
+    }
   });
 
   function printTemp() {
