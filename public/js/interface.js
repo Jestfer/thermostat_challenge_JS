@@ -1,11 +1,12 @@
 /// Acceso en la consola...
-// var thermo = new Thermostat();
+// We'd better define this outside as a global variable
+var thermo = new Thermostat();
 
 $(document).ready(function () {
   /// Todo parte del objeto 'window' en JS
   /// al decir aquí, window.thermo, podemos acceder en la consola y donde queramos
   /// xk todo parte de window en JS, osea q tiene scope global
-  window.thermo = new Thermostat();
+  // window.thermo = new Thermostat(); -> WE DO NOT NEED WINDOW AS WE HAVE var thermo outside of the document scope
 
   /// Objeto entero! Esto nos deja hacer cosas con el obj más abajo
   var currentTemp = $('#current-temperature');
@@ -13,11 +14,11 @@ $(document).ready(function () {
   // console.log(thermo.currentTemp);
 
   // Closure, función como parámetro...
-  $('#temperature-up').click(function (e) {
+  $('#temperature-up').click(function () { // function (e) -> for the event
     /// Mal hecho, no modificamos la propiedad, el método upTemp se encarga de eso
     /// xk la propiedad normalmente sería privada y no podríamos modificarla
     // thermo.currentTemp += 1;
-    console.log(e);
+    // console.log(e);
     thermo.upTemp(1);
     printTemp();
   });
