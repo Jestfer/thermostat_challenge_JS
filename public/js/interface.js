@@ -49,4 +49,12 @@ $(document).ready(function () {
     currentTemp.text(thermo.currentTemp);
     $('#temperature').attr('class', thermo.energyUsage());
   };
+
+  $.ajax({
+    url: "api.openweathermap.org/data/2.5/weather?q={London},{uk}",
+    dataType: 'jsonp',
+    success: function(results) {
+      console.log(results);
+    }
+  });
 });
